@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "codex-monthly-salary-cat-skin",
+  "name": "Codex 月薪喵",
+  "version": "1.0.0",
+  "author": "Codex",
+  "description": "月薪喵打工主题，包含 12 帧循环 GIF、原生功能卡和可恢复 CDP 注入。",
+  "platforms": ["macos"],
+  "preview": "assets/salary-cat-source.png",
+  "animatedHero": "assets/salary-cat-hero.gif",
+  "scripts": {
+    "install": "scripts/install-salary-cat-skin.sh",
+    "activate": "scripts/start-salary-cat-skin.sh",
+    "deactivate": "scripts/restore-salary-cat-skin.sh",
+    "verify": "scripts/verify-salary-cat-skin.sh"
+  },
+  "requirements": {
+    "node": ">=18",
+    "codexBundleId": "com.openai.codex",
+    "defaultPort": 9335
+  }
+}

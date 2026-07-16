@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex 月薪喵皮肤"
+  short_description: "Apply and restore the animated Monthly Salary Cat skin"
+  default_prompt: "Use $codex-monthly-salary-cat-skin to apply, verify, update, or restore the animated Codex Monthly Salary Cat skin."
