@@ -1,56 +1,52 @@
 # Codex Skin Builder
 
-把角色图片、截图、网页或视觉灵感，制作成可安装、可验证、可恢复的 macOS Codex 桌面动态皮肤。
+**给 Codex 做一套真正能运行的主题。** 皮肤构建 Skill · macOS · 本机 CDP 注入 · 不改官方安装包
 
-这个仓库不是一张覆盖界面的截图模板。它保留 Codex 原生侧边栏、功能卡、项目选择器、输入框和任务内容，只通过 CSS、DOM 与仅监听 `127.0.0.1` 的 Chromium DevTools Protocol 改变视觉层；不会修改、替换或重签官方 Codex `.app`，也不会修改 `app.asar`。
+一张图，一种工作氛围。把角色图片、截图、网页或视觉灵感，制作成可安装、可验证、可恢复的 Codex 桌面动态皮肤。
 
-## 实际界面预览
+> 非 OpenAI 官方产品。不修改、替换或重签官方 Codex `.app`，也不修改 `app.asar`。
 
-以下截图来自当前项目产出的真实 Codex 皮肤界面，侧边栏、功能卡、项目选择器、输入框与任务区域均保留原生交互。
+## 效果预览
 
-### 云上鹤书房
+以下均为当前项目产出的真实 Codex 皮肤界面。侧边栏、功能卡、项目选择器、输入框与任务区域保留原生 DOM 和原生交互，不是整窗截图覆盖。
 
-![Codex Skin Builder 云上鹤书房主题实际界面](assets/5741784165072_.pic_hd.jpg)
+![云上鹤书房](assets/5741784165072_.pic_hd.jpg)
 
-### 水豚轨道温室
+<sub>云上鹤书房 · 水墨留白与暖灰工作台</sub>
 
-![Codex Skin Builder 水豚轨道温室主题实际界面](assets/5751784165079_.pic_hd.jpg)
+![水豚轨道温室](assets/5751784165079_.pic_hd.jpg)
 
-### 月薪喵打工人
+<sub>水豚轨道温室 · 太空舷窗与植物实验室</sub>
 
-![Codex Skin Builder 月薪喵主题实际界面](assets/5761784165354_.pic.jpg)
+![月薪喵打工人](assets/5761784165354_.pic.jpg)
 
-## 内置参考实现
+<sub>月薪喵打工人 · 暖黄办公室与轻量金币动效</sub>
 
-仓库内置的 `assets/reference-skin` 是脚手架实际使用的完整运行时参考实现：
+## 它能做什么
 
-- 动态主视觉：`salary-cat-hero.gif`，1264 × 553，12 帧循环动画。
-- 静态源图：`salary-cat-source.png`，1942 × 809。
-- CSS、注入器、安装器、验证器与恢复脚本都位于同一个参考皮肤目录中。
-
-## 它会生成什么
-
-每次脚手架生成的皮肤都是一个完整、可独立分发的目录，包含：
-
-- 静态 PNG 与循环 GIF 主视觉。
-- 主题 CSS 和渲染进程注入代码。
-- macOS 安装、启动、验证与恢复脚本。
-- `skin.json` 清单和 Codex skill 元数据。
-- 独立的运行状态目录、调试端口和桌面启动器名称。
-- 原生交互保留、减少动态效果回退和清理路径。
+- **真·可交互**：侧栏、建议卡、项目选择器、输入框和任务内容仍是 Codex 原生控件。
+- **从素材到皮肤包**：以 PNG、GIF、截图、网页或视觉简报为输入，生成可独立分发的完整目录。
+- **可定制**：脚手架会重命名 CSS/JS/shell 标识、状态目录、启动器、清单和素材，避免不同主题互相冲突。
+- **可验证**：包含静态检查、隔离安装、截图验证和安装/恢复往返清单。
+- **可恢复**：提供实时清理与完整基础主题恢复路径。
+- **相对安全**：通过只监听 `127.0.0.1` 的 Chromium DevTools Protocol 注入，不修改官方二进制和签名。
 
 ## 快速开始
 
-### 1. 克隆并准备素材
+要求：macOS 12 或更高版本、官方 Codex 桌面版、Python 3。构建 GIF 与运行部分脚本需要 Node.js 18 或更高版本。
+
+### 1. 克隆项目
 
 ```zsh
 git clone https://github.com/kongxcer555/codex-skin-builder.git
 cd codex-skin-builder
 ```
 
-准备一张横向 PNG 源图和对应的循环 GIF。推荐让主体位于画面右侧 45–55%，左侧留出 Codex 原生文案所需的负空间；图片中不要嵌入文字、Logo、界面边框或水印。
+### 2. 准备主视觉
 
-### 2. 生成独立皮肤包
+准备一张横向 PNG 源图和对应的循环 GIF。推荐让主体位于画面右侧 45–55%，左侧保留 Codex 原生文案所需的负空间；图片中不要嵌入文字、Logo、界面边框或水印。
+
+### 3. 生成独立皮肤包
 
 ```zsh
 python3 scripts/scaffold_skin.py \
@@ -62,98 +58,57 @@ python3 scripts/scaffold_skin.py \
   --output /absolute/path/codex-example-skin
 ```
 
-`--slug` 只接受小写字母、数字和连字符；输出目录必须尚不存在。脚手架会基于内置参考实现复制完整运行时，并同步重命名 CSS/JS/shell 标识、状态目录、启动器、清单与素材文件，避免不同皮肤互相冲突。
+`--slug` 只接受小写字母、数字和连字符，输出目录必须尚不存在。生成结果包含素材、主题 CSS、注入器、安装/启动/验证/恢复脚本、`skin.json` 和 skill 元数据。
 
-### 3. 调整视觉层
+### 4. 调整主题并验证
 
-生成后主要编辑：
+主要编辑生成包中的：
 
-```text
-codex-example-skin/
-├── assets/
-│   ├── example-hero.gif
-│   ├── example-source.png
-│   ├── example-skin.css
-│   └── renderer-inject.js
-├── scripts/
-├── references/
-├── agents/openai.yaml
-├── skin.json
-└── SKILL.md
-```
+- `assets/<key>-skin.css`：色板、卡片、输入框与装饰动效。
+- `assets/renderer-inject.js`：主题节点、可见文案和幂等注入逻辑。
+- `skin.json`：皮肤名称、描述、预览图和默认端口。
 
-在 `assets/example-skin.css` 中替换色板、卡片与装饰效果，在 `assets/renderer-inject.js` 中调整可见文案和主题节点。保持注入幂等，装饰层使用 `pointer-events: none`，并保留 `prefers-reduced-motion` 的静态 PNG 回退。
+发布前按 [`references/qa.md`](references/qa.md) 检查 Shell/JavaScript 语法、清单路径、PNG/GIF、隔离安装/恢复、回环端口和创建者机器绝对路径。只有获得明确授权后，才应重启当前 Codex 窗口或执行实时注入验证。
 
-### 4. 验证和打包
+## 内置参考实现
 
-发布前至少检查：
+`assets/reference-skin/` 是脚手架实际复制和改写的完整 macOS 参考运行时，不只是演示素材。
 
-- Shell 与 JavaScript 语法。
-- `skin.json` 格式及所有素材路径。
-- PNG 尺寸、GIF 帧数与循环设置。
-- 隔离环境中的安装/恢复往返。
-- CDP 只绑定 `127.0.0.1`。
-- 生成包中不存在创建者机器的绝对路径。
+| 内容 | 路径 | 用途 |
+| --- | --- | --- |
+| 脚手架 | `scripts/scaffold_skin.py` | 从参考运行时生成新的独立皮肤包 |
+| 动态主视觉 | `assets/reference-skin/assets/salary-cat-hero.gif` | 1264 × 553、12 帧循环 GIF |
+| 静态回退图 | `assets/reference-skin/assets/salary-cat-source.png` | 1942 × 809，适配“减少动态效果” |
+| 主题与注入器 | `assets/reference-skin/assets/` | CSS、渲染注入与主视觉素材 |
+| 生命周期脚本 | `assets/reference-skin/scripts/` | 构建、安装、启动、验证和恢复 |
+| 架构说明 | `references/runtime-architecture.md` | CDP、WebSocket、注入与清理边界 |
+| 视觉工作流 | `references/visual-workflow.md` | 构图、色板、素材与动效建议 |
 
-完整检查项见 [`references/qa.md`](references/qa.md)。只有在获得明确授权后，才应重启当前 Codex 窗口或执行实时 CDP 注入验证。
-
-## 直接体验内置参考皮肤
-
-内置的“月薪喵 × 打工人”皮肤是一套真实、完整的 macOS 实现，可用于理解生成包的最终结构：
+直接安装内置“月薪喵”参考皮肤：
 
 ```zsh
 cd assets/reference-skin
 /bin/zsh scripts/install-salary-cat-skin.sh
 ```
 
-验证并截图：
-
-```zsh
-~/.codex/skills/codex-monthly-salary-cat-skin/scripts/start-salary-cat-skin.sh --restart-existing
-~/.codex/skills/codex-monthly-salary-cat-skin/scripts/verify-salary-cat-skin.sh \
-  --screenshot "$HOME/Desktop/codex-salary-cat-check.png"
-```
-
-恢复并卸载：
-
-```zsh
-~/.codex/skills/codex-monthly-salary-cat-skin/scripts/restore-salary-cat-skin.sh \
-  --restore-base-theme --uninstall
-```
-
-参考皮肤的详细说明见 [`assets/reference-skin/README.zh-CN.md`](assets/reference-skin/README.zh-CN.md)。
-
-## 项目结构
-
-```text
-codex-skin-builder/
-├── SKILL.md                         # Skill 工作流与交付要求
-├── agents/openai.yaml              # Codex skill 展示元数据
-├── scripts/scaffold_skin.py        # 皮肤包脚手架
-├── assets/reference-skin/          # 可运行的月薪喵参考实现
-│   ├── assets/                     # PNG、GIF、CSS 与注入代码
-│   ├── scripts/                    # 构建、安装、启动、验证、恢复脚本
-│   ├── references/                 # 运行说明与 QA 清单
-│   ├── skin.json
-│   └── SKILL.md
-└── references/
-    ├── visual-workflow.md           # 素材分析、构图和动效建议
-    ├── runtime-architecture.md      # CDP 与注入架构
-    └── qa.md                        # 静态、隔离、实时与恢复测试
-```
+完整安装、验证和恢复命令见 [`assets/reference-skin/README.zh-CN.md`](assets/reference-skin/README.zh-CN.md)。
 
 ## 安全边界
 
+- CDP 仅绑定 `127.0.0.1`；主题运行期间不要运行可能连接本机调试端口的不可信程序。
 - 不修改、不解包、不重签官方 Codex 应用或 `app.asar`。
-- 调试端点只允许监听 `127.0.0.1`，不得暴露到局域网。
 - 不在未经授权的情况下关闭或重启用户正在使用的 Codex 窗口。
-- 生成包必须提供实时清理和完整恢复路径。
+- 装饰性注入元素保持 `pointer-events: none`，不阻断原生操作。
 - 初次安装测试使用隔离的 `HOME` 与桌面目录。
-- 使用第三方角色或图片制作可再分发皮肤前，应确认相应使用与传播权限。
+- 每个生成包都必须保留实时清理和完整恢复路径。
 
-## 运行要求
+## 许可与声明
 
-- macOS 12 或更高版本。
-- 官方 Codex 桌面版。
-- Python 3（运行脚手架）。
-- Node.js 18 或更高版本（构建 GIF 与运行参考实现相关脚本）。
+- 软件源代码采用 [`LICENSE`](LICENSE) 中的 MIT License。
+- 详细权利边界见 [`NOTICE.md`](NOTICE.md)。MIT License 不授予 OpenAI/Codex 商标、官方应用二进制、用户提供图片、第三方作品、角色形象或展示图的使用权。
+- 本项目为非官方定制工具，与 OpenAI 无隶属、认可或赞助关系；Codex、ChatGPT 及相关权利归其权利人。
+- 使用人物、角色、品牌或第三方图片制作可公开分发的主题前，请自行确认肖像权、著作权与商标授权。
+
+---
+
+挑一张图，把你的 Codex 变成今天想要的样子。
