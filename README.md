@@ -4,18 +4,25 @@
 
 这个仓库不是一张覆盖界面的截图模板。它保留 Codex 原生侧边栏、功能卡、项目选择器、输入框和任务内容，只通过 CSS、DOM 与仅监听 `127.0.0.1` 的 Chromium DevTools Protocol 改变视觉层；不会修改、替换或重签官方 Codex `.app`，也不会修改 `app.asar`。
 
-## 真实效果素材
+## 实际界面预览
 
-下面两张图均来自仓库内置的 `assets/reference-skin`，也是脚手架实际使用的参考实现。
+以下截图来自当前项目产出的真实 Codex 皮肤界面，侧边栏、功能卡、项目选择器、输入框与任务区域均保留原生交互。
 
-![月薪喵参考皮肤动态主视觉](assets/reference-skin/assets/salary-cat-hero.gif)
+### 云上鹤书房
 
-<details>
-<summary>查看静态源图（系统开启“减少动态效果”时使用）</summary>
+![Codex Skin Builder 云上鹤书房主题实际界面](assets/5741784165072_.pic_hd.jpg)
 
-![月薪喵参考皮肤静态源图](assets/reference-skin/assets/salary-cat-source.png)
+### 水豚轨道温室
 
-</details>
+![Codex Skin Builder 水豚轨道温室主题实际界面](assets/5751784165079_.pic_hd.jpg)
+
+### 月薪喵打工人
+
+![Codex Skin Builder 月薪喵主题实际界面](assets/5761784165354_.pic.jpg)
+
+## 内置参考实现
+
+仓库内置的 `assets/reference-skin` 是脚手架实际使用的完整运行时参考实现：
 
 - 动态主视觉：`salary-cat-hero.gif`，1264 × 553，12 帧循环动画。
 - 静态源图：`salary-cat-source.png`，1942 × 809。
