@@ -83,6 +83,7 @@ python3 scripts/scaffold_skin.py \
 | 生命周期脚本 | `assets/reference-skin/scripts/` | 构建、安装、启动、验证和恢复 |
 | 架构说明 | `references/runtime-architecture.md` | CDP、WebSocket、注入与清理边界 |
 | 视觉工作流 | `references/visual-workflow.md` | 构图、色板、素材与动效建议 |
+| 公开安全 starter | `references/public-safe-starters.md` | 从可分发素材生成可发布皮肤包，避免泄露私有 Codex 截图 |
 
 直接安装内置“月薪喵”参考皮肤：
 
