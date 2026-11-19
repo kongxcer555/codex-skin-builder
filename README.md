@@ -1,5 +1,7 @@
 # Codex Skin Builder
 
+[![Featured on Agent Skins](https://agentskins.app/badge/chatgpt/cloud-crane-study.svg)](https://agentskins.app/skins/chatgpt/cloud-crane-study)
+
 **给 Codex 做一套真正能运行的主题。** 皮肤构建 Skill · macOS · 本机 CDP 注入 · 不改官方安装包
 
 一张图，一种工作氛围。把角色图片、截图、网页或视觉灵感，制作成可安装、可验证、可恢复的 Codex 桌面动态皮肤。
